@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>써튼어학원 × 리얼아카데미 — 대치라이브</title>
+<meta property="og:title" content="써튼어학원 × 리얼아카데미 — 대치라이브">
+<meta property="og:description" content="대치동 써튼어학원 원장님 수업을 집에서 실시간으로.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://daechi-live2.vercel.app/assets/og.png">
+<meta name="description" content="대치동 써튼어학원 원장님 수업을 집에서 실시간으로.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a;--ink-2:#1f1f1f;--paper:#ffffff;--paper-2:#fafafa;
+    --line:#ececec;--line-2:#d9d9d9;--mute:#8a8a8a;--mute-2:#b5b5b5;
+    --sans:"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --serif:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+    --sutton:#0a0a0a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+
+  .frame{width:100%;max-width:430px;margin:0 auto;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line);overflow:hidden}
+
+  /* topbar */
+  .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand{font-size:12px;font-weight:400;letter-spacing:-0.01em;color:var(--mute);display:flex;align-items:baseline;gap:6px}
+  .brand b{font-weight:800;color:#000}
+  .cta-mini{background:#000;color:#fff;padding:7px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:-0.01em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .cta-mini::before{content:"";width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+  section{padding:96px 28px;border-bottom:1px solid var(--line);position:relative}
+  section.dark{background:#0a0a0a;color:#fff;border-bottom-color:#1a1a1a}
+  section.tight{padding:72px 28px}
+
+  h1,h2,h3,h4{font-weight:800;letter-spacing:-0.025em;line-height:1.25;text-wrap:balance;font-family:var(--serif)}
+  .eyebrow{font-size:11px;color:var(--mute-2);font-weight:400;letter-spacing:0.12em;margin-bottom:10px;font-family:var(--mono)}
+  .dark .eyebrow{color:#555}
+
+  /* ── HERO ── */
+  .hero{padding:0;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:#0a0a0a}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#111 0%,#0a0a0a 60%)}
+  .hero-badge{
+    position:absolute;top:32px;left:28px;right:28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .sutton-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid #333;padding:8px 14px;background:#0a0a0a;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:#ccc;
+  }
+  .sutton-badge::before{content:"S";width:20px;height:20px;background:#fff;color:#000;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;font-family:var(--sans)}
+  .onair-badge{display:inline-flex;align-items:center;gap:6px;background:#e02020;color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:0.14em;padding:5px 10px}
+  .onair-badge::before{content:"";width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 1.4s infinite;flex-shrink:0}
+
+  .hero-body{position:relative;z-index:1;padding:28px 28px 64px}
+  .hero-pretitle{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:#666;margin-bottom:18px}
+  .hero-title{font-size:clamp(32px,10vw,48px);font-weight:900;letter-spacing:-0.04em;line-height:1.1;color:#fff;font-family:var(--serif);word-break:keep-all}
+  .hero-title .accent{color:#fff;border-bottom:2px solid #fff;padding-bottom:2px}
+  .hero-sub{margin-top:20px;font-size:16px;line-height:1.7;color:#888;letter-spacing:-0.015em;word-break:keep-all}
+  .hero-sub b{color:#ccc;font-weight:600}
+
+  /* ── INSTRUCTOR HERO ── */
+  .instructor-hero{padding:0;border-bottom:1px solid var(--line)}
+  .ih-top{background:#000;color:#fff;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .ih-badge{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;color:#555}
+  .ih-label{background:#fff;color:#000;padding:5px 10px;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;font-weight:700}
+  .ih-portrait{width:100%;aspect-ratio:3/4;background:#f1efe9;overflow:hidden;position:relative}
+  .ih-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .ih-portrait-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%)}
+  .ih-portrait-caption{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
+  .ih-name-en{font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1;font-family:var(--serif)}
+  .ih-name-ko{font-size:14px;color:#ccc;font-weight:500;margin-top:4px;letter-spacing:-0.01em}
+  .ih-role{font-family:var(--mono);font-size:9px;color:#888;letter-spacing:0.14em;margin-top:6px}
+  .ih-body{padding:36px 28px}
+  .ih-creds{list-style:none;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .ih-creds li{font-size:13px;color:#2a2a2a;letter-spacing:-0.01em;line-height:1.6;padding:14px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:20px 1fr;gap:10px}
+  .ih-creds li::before{content:"—";color:var(--mute-2);font-size:11px;padding-top:2px}
+  .ih-quote{margin-top:28px;padding:24px;background:#fafafa;border-left:3px solid #000}
+  .ih-quote p{font-size:15px;line-height:1.8;color:#1a1a1a;letter-spacing:-0.015em;font-weight:500;word-break:keep-all}
+  .ih-quote cite{display:block;margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--mute);letter-spacing:0.1em;font-style:normal}
+
+  /* ── CLASS FEATURE ── */
+  .class-num{font-family:var(--mono);font-size:11px;color:var(--mute-2);letter-spacing:0.16em;margin-bottom:16px}
+  .class-title{font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.3;margin-bottom:8px}
+  .class-sub{font-size:13px;color:#5a5a5a;line-height:1.7;letter-spacing:-0.01em;margin-bottom:28px}
+  .feature-list{border-top:1px solid var(--line);margin-top:8px}
+  .feature{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+  .feature .fi{font-family:var(--mono);font-size:10px;color:var(--mute-2);letter-spacing:0.14em;padding-top:4px}
+  .feature h4{font-size:15px;font-weight:800;letter-spacing:-0.018em;margin-bottom:6px}
+  .feature p{font-size:13px;color:#5a5a5a;line-height:1.7;letter-spacing:-0.01em}
+
+  /* ── PROOF ── */
+  .cert-wrapper{margin-top:28px;position:relative;overflow:hidden;background:#000;padding:0 20px}
+  .cert-wrapper::before{content:"";position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#000,transparent);z-index:2}
+  .cert-wrapper::after{content:"";position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,#000,transparent);z-index:2}
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start;padding:16px 0}
+  .cert-item{overflow:hidden;border-radius:10px;aspect-ratio:1/1}
+  .cert-item img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:10px}
+
+  /* ── ACCESS ── */
+  .livecard{margin-top:28px;border:1px solid #1f1f1f;overflow:hidden;background:#0f0f0f}
+  .livecard .lh{background:#000;color:#aaa;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1f1f1f}
+  .livecard .lh .live{display:inline-flex;align-items:center;gap:6px}
+  .livecard .lh .live::before{content:"";width:5px;height:5px;background:#e02020;border-radius:50%;animation:pulse 1.4s infinite}
+
+  /* ── MORE TEACHERS ── */
+  .teacher-row{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}
+  .teacher-portrait{width:88px;height:88px;border-radius:50%;overflow:hidden;background:#f1efe9;flex-shrink:0}
+  .teacher-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .teacher-name-en{font-size:18px;font-weight:800;letter-spacing:-0.02em}
+  .teacher-name-ko{font-size:12px;color:#888;margin-top:2px;letter-spacing:-0.01em}
+  .teacher-role{font-family:var(--mono);font-size:9px;color:var(--mute);letter-spacing:0.1em;margin-top:3px}
+  .teacher-class{font-size:14px;font-weight:700;letter-spacing:-0.015em;margin-top:10px}
+  .teacher-desc{font-size:12.5px;color:#5a5a5a;line-height:1.7;margin-top:4px;letter-spacing:-0.01em}
+
+  /* ── SCHEDULE ── */
+  .timetable{width:100%;border-collapse:collapse;table-layout:fixed}
+  .timetable th{background:#000;color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;padding:10px 2px;text-align:center;border:1px solid #1a1a1a}
+  .timetable th.time-h{width:36px}
+  .timetable td{padding:0 2px;text-align:center;border:1px solid var(--line);font-size:9.5px;font-weight:600;letter-spacing:-0.01em;line-height:1.3;word-break:keep-all;height:40px;vertical-align:middle}
+  .timetable td.t{font-family:var(--mono);font-size:8.5px;color:var(--mute);background:#fafafa;font-weight:400}
+  .timetable td.empty{color:var(--mute-2);font-size:12px;font-weight:300}
+  .timetable td.end{font-family:var(--mono);font-size:8.5px;letter-spacing:0.12em;color:var(--mute-2);font-weight:400}
+  .timetable tr:last-child td{border-bottom:1px solid #000}
+
+  /* ── CTA ── */
+  .megacta{padding:96px 28px;background:#000;color:#fff}
+  .megacta .eyebrow{color:#555}
+  .megacta h2{font-size:32px;font-weight:800;letter-spacing:-0.035em;line-height:1.25;margin-top:8px;color:#fff;font-family:var(--serif);word-break:keep-all}
+  .megacta-btns{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+  .megacta-btns a{display:block;padding:18px 20px;font-size:15px;font-weight:800;letter-spacing:-0.01em;text-decoration:none;text-align:center}
+  .megacta-btns .btn-primary{background:#fff;color:#000}
+  .megacta-btns .btn-secondary{background:transparent;color:#fff;border:1px solid #333}
+  .cta-note{margin-top:16px;font-family:var(--mono);font-size:10px;color:#444;letter-spacing:0.08em;text-align:center}
+
+  /* closing */
+  .closing{background:#0a0a0a;color:#fff;padding:96px 28px}
+  .closing-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;color:#444;margin-bottom:24px}
+  .closing h2{font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.4;color:#fff;font-family:var(--serif);word-break:keep-all}
+  .closing-body{margin-top:24px;font-size:12px;color:#666;line-height:1.9;letter-spacing:-0.01em}
+
+  /* footer */
+  footer{padding:36px 28px 64px;background:#0a0a0a;border-top:1px solid #1a1a1a}
+  .footer-links{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:20px}
+  .footer-links span,.footer-links a{font-size:12px;font-weight:600;color:#888;letter-spacing:-0.01em;cursor:pointer;text-decoration:none}
+  .footer-links .sep{color:#333}
+  .footer-biz{font-size:11px;color:#444;line-height:1.9;letter-spacing:-0.01em;margin-bottom:24px}
+  .footer-copy{font-size:10px;color:#333;line-height:1.8;letter-spacing:0.02em}
+
+  /* desktop */
+  @media (min-width:1024px){
+    .frame{max-width:1280px}
+    .topbar{padding:20px 56px}
+    .hero{min-height:88vh}
+    .hero-badge{top:40px;left:56px;right:56px}
+    .hero-body{padding:40px 80px 96px;max-width:760px}
+    .hero-title{font-size:72px;letter-spacing:-0.05em}
+    .hero-sub{font-size:20px;max-width:560px}
+    section{padding:140px 80px;max-width:1280px;margin:0 auto}
+    section.tight{padding:96px 80px}
+    .ih-top{padding:28px 80px}
+    .ih-portrait{aspect-ratio:16/7}
+    .ih-portrait img{object-position:center 20%}
+    .ih-body{padding:56px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+    .megacta{padding:140px 80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+    .megacta h2{font-size:56px}
+    .megacta-btns{flex-direction:row;margin-top:0}
+    .megacta-btns a{white-space:nowrap;padding:20px 36px}
+    footer{padding:48px 80px 64px}
+    .closing{padding:140px 80px}
+    .closing h2{font-size:48px}
+  }
+  @media (min-width:720px) and (max-width:1023px){
+    .frame{max-width:680px}
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand"><b>써튼어학원</b> × 리얼아카데미</div>
+    <a href="#cta" class="cta-mini">무료체험 신청</a>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero" data-screen-label="01 Hero">
+    <div class="hero-bg"></div>
+    <div class="hero-badge">
+      <div class="sutton-badge">SUTTON ENGLISH ACADEMY</div>
+      <div class="onair-badge">ON AIR</div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-pretitle">DAECHI LIVE — 초등 영어</div>
+      <h1 class="hero-title">
+        대치동<br>
+        써튼어학원이<br>
+        <span class="accent">직접 들어옵니다.</span>
+      </h1>
+      <p class="hero-sub">
+        크리스 원장님 수업 그대로.<br>
+        <b>전국 어디서나, 실시간으로.</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. INSTRUCTOR HERO — 크리스 원장님 전면 -->
+  <section class="instructor-hero" data-screen-label="02 Instructor">
+    <div class="ih-top">
+      <div class="ih-badge">SIGNATURE INSTRUCTOR</div>
+      <div class="ih-label">대치동 원장 직강</div>
+    </div>
+    <div class="ih-portrait">
+      <img src="assets/instructor-chris.png" alt="크리스 원장님" />
+      <div class="ih-portrait-overlay"></div>
+      <div class="ih-portrait-caption">
+        <div class="ih-name-en">Chris</div>
+        <div class="ih-name-ko">크리스 원장님</div>
+        <div class="ih-role">써튼어학원 원장 · SUTTON ENGLISH ACADEMY</div>
+      </div>
+    </div>
+    <div class="ih-body">
+      <ul class="ih-creds">
+        <li>University of Houston 경영학 학사</li>
+        <li>現 대치동 써튼어학원 원장</li>
+        <li>前 iSpeak Academy(개포) / WILS(목동) / ILE(대치) 영어 강사</li>
+        <li>대치동 10년+ 현장 수업 경력</li>
+      </ul>
+      <div class="ih-quote">
+        <p>어떤 아이라도 30분 안에 입을 열게 만드는 것,<br>대치동에서 수년간 쌓아온 방식 그대로입니다.</p>
+        <cite>— CHRIS, 써튼어학원 원장</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 수업 특징 -->
+  <section data-screen-label="03 Class">
+    <div class="eyebrow">SIGNATURE CLASS</div>
+    <div class="class-num">01</div>
+    <div class="class-title">Theme Talk Class</div>
+    <div class="class-sub">생각 확장 테마 스피킹 — 상황을 상상하며 내 생각을 영어로 표현하기</div>
+    <div class="feature-list">
+      <div class="feature">
+        <div class="fi">P 01</div>
+        <div>
+          <h4>원장님이 직접 수업합니다</h4>
+          <p>써튼어학원을 운영하는 크리스 원장님이 직접 이끄는 수업입니다. 강사에게 위탁하는 수업이 아닙니다.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="fi">P 02</div>
+        <div>
+          <h4>막히는 순간을 피하지 않습니다</h4>
+          <p>틀려도 괜찮습니다. 중요한 건 다시 말하는 것. 발화의 양이 쌓이면 유창함은 따라옵니다.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="fi">P 03</div>
+        <div>
+          <h4>외운 영어가 아닙니다</h4>
+          <p>상황 속에서 내 생각을 영어로 꺼내는 훈련. 동네 학원에서 경험하기 어려운 대치동 방식입니다.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="fi">P 04</div>
+        <div>
+          <h4>월화수목금, 매일 수업합니다</h4>
+          <p>주 5일, 실시간 라이브로. 현장 수업과 동일한 밀도로 매일 영어에 노출됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 접근성 -->
+  <section class="dark" data-screen-label="04 Access">
+    <div class="eyebrow">ACCESS</div>
+    <h2 style="font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1.3;margin-top:8px;color:#fff;font-family:var(--serif);word-break:keep-all">
+      대치동에 살지 않아도,<br>써튼어학원 수업을<br>들을 수 있습니다.
+    </h2>
+    <p style="margin-top:20px;font-size:14px;color:#888;line-height:1.85;letter-spacing:-0.01em">
+      대치동 현장 수업을 편집 없이 실시간으로.<br>
+      전국 어디서나, 원장님 직강으로 받습니다.
+    </p>
+    <div class="livecard" style="margin-top:36px">
+      <div class="lh">
+        <span class="live">LIVE · 써튼어학원 → 전국</span>
+        <span>NOW</span>
+      </div>
+      <div style="background:#fff;padding:0">
+        <img src="assets/daechi-live-map-hq.png" alt="대치동 LIVE 송출 지도" style="width:100%" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 결과 증명 -->
+  <section class="dark" data-screen-label="05 Proof">
+    <div class="eyebrow">RESULT</div>
+    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.3;margin-top:8px;color:#fff;font-family:var(--serif);word-break:keep-all">
+      써튼어학원 수업을 들은<br>아이들이 내고 있는<br>결과입니다.
+    </h2>
+    <p style="margin-top:14px;font-size:14px;color:#888;line-height:1.75">공인 영어시험 토플로 성장을 확인했습니다.</p>
+    <div class="cert-wrapper">
+      <div class="cert-grid">
+        <div class="cert-item"><img src="assets/cert-01.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-02.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-03.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-04.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-05.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-06.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-07.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-08.png" alt="" /></div>
+        <div class="cert-item"><img src="assets/cert-09.png" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 다른 강사들 -->
+  <section data-screen-label="06 Other Teachers">
+    <div class="eyebrow">ALL INSTRUCTORS</div>
+    <h2 style="font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.3;margin-bottom:32px;font-family:var(--serif)">크리스 원장님 외에도<br>써튼의 수업이 이어집니다.</h2>
+    <div style="border-top:1px solid var(--line)">
+      <div class="teacher-row">
+        <div class="teacher-portrait"><img src="assets/instructor-eliza.png" alt="" /></div>
+        <div>
+          <div class="teacher-name-en">Eliza</div>
+          <div class="teacher-name-ko">일라이자 선생님</div>
+          <div class="teacher-role">시험 영어 마스터</div>
+          <div class="teacher-class">TOEFL Primary Step 1</div>
+          <div class="teacher-desc">토플 프라이머리 Step 1 실전 문제로 시험 흐름 익히기. 감이 아닌 점수로 실력을 확인합니다.</div>
+        </div>
+      </div>
+      <div class="teacher-row">
+        <div class="teacher-portrait"><img src="assets/instructor-ruan.png" alt="" /></div>
+        <div>
+          <div class="teacher-name-en">Ruan</div>
+          <div class="teacher-name-ko">루안 선생님</div>
+          <div class="teacher-role">영어 교육 전문가</div>
+          <div class="teacher-class">Creative Storytelling</div>
+          <div class="teacher-desc">기초 문장 패턴으로 나만의 스토리 만들기. 외운 영어가 아닌, 만든 영어는 잊히지 않습니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 시간표 -->
+  <section class="tight" data-screen-label="07 Schedule">
+    <div class="eyebrow">SCHEDULE</div>
+    <h2 style="font-size:24px;font-weight:800;letter-spacing:-0.03em;margin-bottom:28px;font-family:var(--serif)">전체 시간표</h2>
+    <table class="timetable">
+      <thead>
+        <tr>
+          <th class="time-h"></th>
+          <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="t">17:00</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td class="empty" rowspan="2">·</td></tr>
+        <tr><td class="t">17:30</td></tr>
+        <tr><td class="t">18:00</td><td>기초 패턴</td><td>기초 패턴</td><td>기초 패턴</td><td>기초 패턴</td><td>토플 Step 1</td></tr>
+        <tr><td class="t">18:30</td><td>알파벳·파닉스</td><td>알파벳·파닉스</td><td>알파벳·파닉스</td><td>알파벳·파닉스</td><td class="empty">·</td></tr>
+        <tr><td class="t">19:00</td><td>심화 패턴</td><td>심화 패턴</td><td>심화 패턴</td><td>심화 패턴</td><td>토플 Step 2</td></tr>
+        <tr><td class="t">19:30</td><td>스토리북</td><td>스토리북</td><td>스토리북</td><td>스토리북</td><td class="empty">·</td></tr>
+        <tr><td class="t">20:00</td><td>고급 패턴</td><td>고급 패턴</td><td>고급 패턴</td><td>고급 패턴</td><td class="empty">·</td></tr>
+        <tr><td class="t">20:30</td><td>쉐도잉</td><td>쉐도잉</td><td>쉐도잉</td><td>쉐도잉</td><td class="empty">·</td></tr>
+        <tr><td class="t">21:00</td><td>스토리텔링</td><td>롤플레이</td><td>퀴즈</td><td>퀴즈</td><td class="empty">·</td></tr>
+        <tr><td class="t">21:30</td><td class="end">END</td><td class="end">END</td><td class="end">END</td><td class="end">END</td><td class="end">END</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 8. CTA -->
+  <div id="cta" class="megacta" data-screen-label="08 CTA">
+    <div>
+      <div class="eyebrow">FREE TRIAL</div>
+      <h2>써튼어학원 수업,<br>먼저 직접 경험해보세요.</h2>
+      <div class="cta-note" style="text-align:left;margin-top:12px">무료 · 전용기기 무상 배송 · 언제든 반납 가능</div>
+    </div>
+    <div class="megacta-btns">
+      <a href="https://realacademy.co.kr" class="btn-primary">무료체험 신청 →</a>
+      <a href="https://realacademy.co.kr" class="btn-secondary">자세히 알아보기 →</a>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <section class="closing" data-screen-label="Closing">
+    <div class="closing-eyebrow">SUTTON × REAL ACADEMY</div>
+    <h2>대치동 써튼어학원이<br>직접 들어옵니다.</h2>
+    <p class="closing-body">
+      수업의 밀도, 원장님의 방식, 아이가 직접 말하고 쓴 결과물 —<br>
+      말로 설명하는 것과 다릅니다. 직접 경험해보세요.
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://realacademy.link/4e9oC2I" target="_blank" rel="noopener">이용약관</a><span class="sep">|</span>
+      <a href="https://realacademy.link/3ZbRnrr" target="_blank" rel="noopener">개인정보처리방침</a><span class="sep">|</span>
+      <a href="https://realacademy.link/notice" target="_blank" rel="noopener">공지사항</a><span class="sep">|</span>
+      <a href="https://realacademy.link/3TdOFhr" target="_blank" rel="noopener">자주묻는 질문</a>
+    </div>
+    <div class="footer-biz">
+      상호명: (주)소크라에이아이 ｜ 대표이사: 박수영 ｜ 사업자등록번호: 106-87-06394 ｜ 이메일: service@realacademy.co.kr<br>
+      전화: 1644-9022 ｜ 주소: 서울특별시 강남구 테헤란로 424(에프엔타워 대치), 2, 19층<br>
+      통신판매신고번호: 제 2015-서울강남-01494 호
+    </div>
+    <div class="footer-copy">
+      <div>© 2025 Socra AI Inc. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
