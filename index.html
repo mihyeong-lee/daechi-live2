@@ -2,423 +2,206 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>써튼어학원 × 리얼아카데미 — 대치라이브</title>
-<meta property="og:title" content="써튼어학원 × 리얼아카데미 — 대치라이브">
-<meta property="og:description" content="대치동 써튼어학원 원장님 수업을 집에서 실시간으로.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>대치라이브 — 리얼 아카데미</title>
+<meta property="og:title" content="대치라이브 — 리얼 아카데미">
+<meta property="og:description" content="그 학원, 그 원장님, 그 수업 그대로. 대치동 영어, 이제는 집에서 다니세요.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://daechi-live2.vercel.app/assets/og.png">
-<meta name="description" content="대치동 써튼어학원 원장님 수업을 집에서 실시간으로.">
+<meta property="og:url" content="https://daechi-live.vercel.app">
+<meta property="og:image" content="https://daechi-live.vercel.app/assets/og.png">
+<meta name="description" content="그 학원, 그 원장님, 그 수업 그대로. 대치동 영어, 이제는 집에서 다니세요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ── */
-:root {
-  --navy:        #1B3A6B;
-  --navy-mid:    #2952A3;
-  --navy-light:  #EDF2FB;
-  --navy-deep:   #0F2340;
-  --cream:       #F7F5F0;
-  --white:       #FFFFFF;
-  --gold:        #C47F1A;
-  --gold-bg:     #FEF6E4;
-  --ink:         #111827;
-  --ink-2:       #374151;
-  --mute:        #6B7280;
-  --mute-2:      #9CA3AF;
-  --line:        #E5E1D8;
-  --line-2:      #CCC9BF;
-  --sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
-  --serif: "Noto Serif KR", Georgia, serif;
-}
 
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { color: inherit; }
+:root{
+  --ink:#111;--ink-2:#333;--paper:#fff;--paper-2:#f6f5f2;
+  --line:#e4e4e4;--line-2:#ccc;--mute:#888;--mute-2:#bbb;
+  --sans:"Noto Sans KR",-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+  --serif:"Noto Serif KR",Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
 
-/* ── LAYOUT ── */
-.w { width: 960px; margin: 0 auto; }
+.w{max-width:960px;margin:0 auto;padding:0 48px}
 
-/* ── TOPBAR ── */
-.topbar {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,0.96); backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-}
-.topbar .w {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 0;
-}
-.brand {
-  display: flex; align-items: center; gap: 10px;
-}
-.brand-logo { height: 28px; width: auto; object-fit: contain; }
-.brand-sep { width: 1px; height: 18px; background: var(--line-2); }
-.brand-text { font-size: 12px; color: var(--mute); letter-spacing: -0.01em; }
-.topbar-right { display: flex; align-items: center; gap: 14px; }
-.onair {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 10px; font-weight: 700; color: #DC2626;
-  letter-spacing: 0.08em;
-}
-.onair::before {
-  content: ""; width: 6px; height: 6px;
-  background: #DC2626; border-radius: 50%;
-  animation: blink 1.5s infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.btn-nav {
-  background: var(--navy); color: #fff;
-  padding: 9px 20px; font-size: 13px; font-weight: 700;
-  letter-spacing: -0.01em; text-decoration: none; border-radius: 6px;
-}
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .w{height:60px;display:flex;align-items:center}
+.brand{font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:-.02em}
 
-/* ── HERO ── */
-.hero {
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
-}
-.hero .w {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  min-height: 540px;
-}
-.hero-left {
-  padding: 64px 56px 64px 0;
-  display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid var(--line);
-}
-.hero-school {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 28px;
-}
-.hero-logo { height: 32px; width: auto; object-fit: contain; }
-.hero-school-sep { width: 1px; height: 22px; background: var(--line-2); }
-.hero-school-label {
-  font-size: 11px; color: var(--mute);
-  letter-spacing: 0.02em; line-height: 1.5;
-}
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--navy-light); color: var(--navy);
-  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-  padding: 5px 12px; border-radius: 4px; margin-bottom: 22px;
-  width: fit-content;
-}
-.hero-tag::before {
-  content: ""; width: 5px; height: 5px;
-  background: var(--navy-mid); border-radius: 50%;
-}
-h1.hero-title {
-  font-size: 40px; font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.2; color: var(--ink); font-family: var(--serif);
-  word-break: keep-all; margin-bottom: 16px;
-}
-h1.hero-title em { color: var(--navy); font-style: normal; }
-.hero-sub {
-  font-size: 15px; color: var(--mute); line-height: 1.85;
-  letter-spacing: -0.01em; margin-bottom: 36px; word-break: keep-all;
-}
-.hero-stats {
-  display: flex; border: 1px solid var(--line);
-  border-radius: 10px; overflow: hidden; margin-bottom: 32px;
-}
-.hs {
-  flex: 1; padding: 16px 10px; text-align: center;
-  border-right: 1px solid var(--line);
-}
-.hs:last-child { border-right: none; }
-.hs-val {
-  font-size: 18px; font-weight: 800; color: var(--navy);
-  letter-spacing: -0.03em; font-family: var(--serif); line-height: 1;
-}
-.hs-lbl {
-  font-size: 10px; color: var(--mute); margin-top: 5px;
-  letter-spacing: -0.01em; line-height: 1.4; word-break: keep-all;
-}
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--navy); color: #fff;
-  padding: 15px 28px; font-size: 15px; font-weight: 800;
-  letter-spacing: -0.01em; text-decoration: none; border-radius: 8px;
-  width: fit-content; transition: background 0.2s;
-}
-.hero-cta:hover { background: var(--navy-mid); }
-.hero-cta-arrow { font-size: 18px; line-height: 1; }
+/* HERO */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-sec{background:var(--paper);border-bottom:2px solid var(--ink)}
+.hero-sec .w{display:grid;grid-template-columns:1fr 320px;min-height:560px}
+.hero-left{padding:72px 48px 72px 0;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line)}
+.hero-school{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.hero-logo{height:56px;width:auto;max-width:160px;object-fit:contain;border-radius:4px;margin-bottom:10px}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:5px 12px;margin-bottom:22px;width:fit-content}
+.hero-title{font-family:var(--serif);font-size:40px;font-weight:900;letter-spacing:-.04em;line-height:1.15;color:var(--ink);word-break:keep-all;margin-bottom:16px}
+.hero-title em{font-style:normal}
+.hero-sub{font-size:15px;color:var(--mute);line-height:1.85;letter-spacing:-.01em;word-break:keep-all;margin-bottom:36px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:auto}
+.hs{background:var(--paper-2);padding:18px 12px;text-align:center}
+.hs-val{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.5}
+.hs-lbl{display:none}
+.hero-right{position:relative;overflow:hidden;background:var(--paper-2)}
+.hero-right .inst-photo{width:100%;height:100%;object-fit:cover;object-position:top center}
+.hero-inst-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%)}
+.hero-inst-info{position:absolute;bottom:0;left:0;right:0;padding:20px 20px}
+.hi-badge{font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.6);margin-bottom:4px}
+.hi-name{font-family:var(--serif);font-size:20px;font-weight:900;color:#fff;letter-spacing:-.02em}
+.hi-role{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;letter-spacing:-.01em}
 
-/* Hero right — instructor */
-.hero-right {
-  position: relative; overflow: hidden;
-  background: var(--navy-light);
-}
-.hero-right img.inst-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-}
-.hero-inst-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 45%, rgba(15,35,64,0.82) 100%);
-}
-.hero-inst-info {
-  position: absolute; bottom: 28px; left: 24px; right: 24px;
-}
-.hi-name {
-  font-size: 24px; font-weight: 900; color: #fff;
-  font-family: var(--serif); letter-spacing: -0.03em; line-height: 1.1;
-}
-.hi-role {
-  font-size: 11px; color: rgba(255,255,255,0.65);
-  margin-top: 5px; letter-spacing: -0.01em; line-height: 1.5;
-}
-.hi-badge {
-  display: inline-block;
-  background: var(--gold); color: #fff;
-  font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
-  padding: 4px 10px; border-radius: 3px; margin-bottom: 8px;
-}
+/* STATS */
+.stats-sec{background:var(--ink)}
+.stats-sec .w{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{padding:36px 0;border-right:1px solid #2a2a2a;text-align:center}
+.stat:last-child{border-right:0}
+.stat-v{font-family:var(--sans);font-size:20px;font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.35;word-break:keep-all}
 
-/* ── CREDS BAR ── */
-.creds-bar {
-  background: var(--navy-deep);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.creds-bar .w {
-  display: flex; align-items: stretch;
-  gap: 0;
-}
-.cred-item {
-  flex: 1; padding: 20px 16px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  display: flex; align-items: center; gap: 12px;
-}
-.cred-item:last-child { border-right: none; }
-.cred-icon {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 16px;
-}
-.cred-text-val {
-  font-size: 13px; font-weight: 800; color: #fff;
-  letter-spacing: -0.02em; line-height: 1.2;
-}
-.cred-text-lbl {
-  font-size: 10px; color: rgba(255,255,255,0.45);
-  margin-top: 2px; letter-spacing: -0.01em; line-height: 1.3;
-}
+/* SECTION BASE */
+.sec{border-bottom:1px solid var(--line)}
+.sec.off{background:var(--paper-2);border-bottom-color:#e0deda}
+.sec .w{padding-top:88px;padding-bottom:88px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--mute);text-transform:uppercase;margin-bottom:16px}
+.sec-h{font-family:var(--serif);font-size:48px;font-weight:900;letter-spacing:-.04em;line-height:1.12;word-break:keep-all}
+.sec-rule{width:40px;height:2px;background:currentColor;margin:24px 0}
+.sec-body{font-size:15px;line-height:1.9;color:var(--mute);letter-spacing:-.01em;word-break:keep-all}
 
-/* ── SECTION SHARED ── */
-.section { padding: 80px 0; border-bottom: 1px solid var(--line); }
-.section.bg-cream { background: var(--cream); }
-.section.bg-white { background: var(--white); }
-.section.bg-navy { background: var(--navy-deep); }
+/* VIDEO */
+.bv-label{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--mute);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.bv-label::before{content:"";width:6px;height:6px;background:#c00;border-radius:50%;animation:blink 1.4s infinite}
+.bv-player{width:100%;aspect-ratio:16/9;background:#0a0a0a;border:1px solid var(--line);overflow:hidden;margin-top:12px}
+.bv-player video{width:100%;height:100%;display:block}
+.bv-caption{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mute)}
 
-.section-eyebrow {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-  color: var(--navy); margin-bottom: 12px; text-transform: uppercase;
-}
-.section-eyebrow.inv { color: rgba(255,255,255,0.4); }
-h2.section-title {
-  font-size: 30px; font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.25; font-family: var(--serif); word-break: keep-all;
-  margin-bottom: 12px;
-}
-h2.section-title.inv { color: #fff; }
-.section-sub {
-  font-size: 14px; color: var(--mute); line-height: 1.85;
-  letter-spacing: -0.01em; word-break: keep-all;
-}
-.section-sub.inv { color: rgba(255,255,255,0.5); }
+/* PILLARS */
+.pillar-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillar{background:var(--paper-2);padding:36px 32px}
+.pillar-n{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--mute-2);margin-bottom:16px;font-weight:700}
+.pillar h3{font-family:var(--serif);font-size:19px;font-weight:800;letter-spacing:-.025em;line-height:1.4;color:var(--ink);margin-bottom:10px}
+.pillar p{font-size:13px;color:var(--mute);line-height:1.8;letter-spacing:-.01em}
 
-/* ── FEATURES ── */
-.feature-grid {
-  margin-top: 48px;
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-  background: var(--line); border: 1px solid var(--line);
-  border-radius: 12px; overflow: hidden;
-}
-.feature-card {
-  background: var(--white); padding: 32px 28px;
-}
-.fc-num {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-  color: var(--navy-mid); margin-bottom: 14px;
-}
-.fc-title {
-  font-size: 17px; font-weight: 800; letter-spacing: -0.025em;
-  line-height: 1.3; margin-bottom: 10px; word-break: keep-all;
-}
-.fc-body {
-  font-size: 13px; color: var(--ink-2); line-height: 1.8;
-  letter-spacing: -0.01em; word-break: keep-all;
-}
+/* RESULTS */
+.cert-wrap{margin-top:40px;position:relative;overflow:hidden}
+.cert-wrap::before,.cert-wrap::after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:2}
+.cert-wrap::before{top:0;height:48px;background:linear-gradient(to bottom,var(--paper-2),transparent)}
+.cert-wrap::after{bottom:0;height:48px;background:linear-gradient(to top,var(--paper-2),transparent)}
+.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:4px 0}
+.cert-item{overflow:hidden;border-radius:6px;aspect-ratio:1/1;border:1px solid var(--line)}
+.cert-item img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:6px}
 
-/* ── CLASS SECTION ── */
-.class-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: start; margin-top: 48px;
-}
-.class-num-big {
-  font-size: 72px; font-weight: 900; color: var(--navy-light);
-  letter-spacing: -0.06em; line-height: 1; font-family: var(--serif);
-  margin-bottom: 8px;
-}
-.class-name {
-  font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
-  color: var(--navy); margin-bottom: 8px; font-family: var(--serif);
-}
-.class-desc {
-  font-size: 13px; color: var(--mute); line-height: 1.8; letter-spacing: -0.01em;
-  word-break: keep-all;
-}
-.class-points { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
-.cp {
-  padding: 18px 0; border-bottom: 1px solid var(--line);
-  display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: start;
-}
-.cp-idx { font-size: 10px; font-weight: 700; color: var(--mute-2); letter-spacing: 0.1em; padding-top: 3px; }
-.cp-title { font-size: 14px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
-.cp-body { font-size: 12px; color: var(--ink-2); line-height: 1.75; letter-spacing: -0.01em; word-break: keep-all; }
+/* INSTRUCTORS */
+.instr-header-sec{background:var(--paper-2);border-bottom:1px solid var(--line)}
+.instr-header-sec .w{padding-top:88px;padding-bottom:48px}
+.instr-sec{border-bottom:1px solid var(--line);background:var(--paper)}
+.instr-sec .w{display:grid;grid-template-columns:1fr 1fr;padding-top:0;padding-bottom:0}
+.instr-photo{overflow:hidden;background:var(--paper-2);aspect-ratio:3/4}
+.instr-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.instr-body{padding:56px 0 56px 48px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line)}
+.instr-num{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--mute-2);margin-bottom:14px}
+.instr-name{font-family:var(--serif);font-size:52px;font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--ink)}
+.instr-name-ko{font-size:15px;font-weight:600;color:var(--mute);margin-top:8px;letter-spacing:-.02em}
+.instr-badge{display:inline-block;margin-top:14px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:5px 12px;width:fit-content}
+.instr-div{width:100%;height:1px;background:var(--line);margin:20px 0}
+.instr-bio{font-size:14px;color:var(--mute);line-height:1.9;letter-spacing:-.01em;word-break:keep-all}
+.instr-bio b{color:var(--ink);font-weight:700}
+.instr-creds{margin-top:14px;list-style:none;display:flex;flex-direction:column;gap:5px}
+.instr-creds li{font-size:12px;color:var(--mute-2);letter-spacing:-.01em;line-height:1.5;padding-left:14px;position:relative}
+.instr-creds li::before{content:"—";position:absolute;left:0;color:var(--line-2);font-family:var(--mono);font-size:10px}
 
-/* ── ACCESS ── */
-.access-layout { display: grid; grid-template-columns: 1fr 480px; gap: 56px; align-items: center; margin-top: 48px; }
-.access-map { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
-.access-map img { width: 100%; }
+.other-instrs-sec{background:var(--paper-2);border-bottom:1px solid var(--line)}
+.other-instrs-sec .w{padding-top:48px;padding-bottom:56px}
+.other-instrs-grid{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.oi-card{background:var(--paper);padding:20px 18px;display:flex;flex-direction:column}
+.oi-role{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--mute);margin-bottom:6px}
+.oi-name{font-size:13px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.2;margin-bottom:8px}
+.oi-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.oi-tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;border:1px solid var(--line-2);padding:3px 8px;color:var(--mute)}
+.oi-creds{list-style:none;display:flex;flex-direction:column;gap:3px;margin-top:auto}
+.oi-creds li{font-size:11px;color:var(--mute-2);line-height:1.5;letter-spacing:-.01em;padding-left:10px;position:relative}
+.oi-creds li::before{content:"—";position:absolute;left:0;font-family:var(--mono);font-size:9px;color:var(--line-2)}
+.oi-more{background:var(--paper-2);display:flex;align-items:center;justify-content:center}
+.oi-more-text{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--mute-2);font-style:italic}
 
-/* ── PROOF ── */
-.cert-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-  margin-top: 48px;
-}
-.cert-item { border-radius: 10px; overflow: hidden; aspect-ratio: 1; }
-.cert-item img { width: 100%; height: 100%; object-fit: cover; }
+/* SCHEDULE */
+.timetable{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:40px;border:1px solid var(--ink)}
+.timetable th{background:var(--ink);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:13px 4px;text-align:center;border:1px solid #222}
+.timetable th.th-t{width:56px;background:var(--paper-2);color:var(--mute-2)}
+.timetable td{padding:0 4px;text-align:center;border:1px solid var(--line);font-size:11px;font-weight:600;letter-spacing:-.01em;line-height:1.3;word-break:keep-all;height:44px;vertical-align:middle;background:var(--paper);color:var(--ink)}
+.timetable td.t{font-family:var(--mono);font-size:9px;color:var(--mute-2);background:var(--paper-2);font-weight:400}
+.timetable td.empty{color:var(--mute-2);font-size:14px;font-weight:300}
+.timetable td.end{font-family:var(--mono);font-size:9px;color:var(--mute-2);font-weight:400;background:var(--paper-2)}
 
-/* ── TEACHERS ── */
-.teacher-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-  margin-top: 48px;
-}
-.teacher-card {
-  background: var(--white); border: 1px solid var(--line);
-  border-radius: 12px; overflow: hidden;
-  display: flex; align-items: stretch; gap: 0;
-}
-.tc-photo {
-  width: 100px; flex-shrink: 0;
-  background: var(--navy-light);
-}
-.tc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.tc-info { padding: 20px 20px; }
-.tc-name-en { font-size: 20px; font-weight: 900; letter-spacing: -0.03em; font-family: var(--serif); }
-.tc-name-ko { font-size: 11px; color: var(--mute); margin-top: 2px; letter-spacing: -0.01em; }
-.tc-role { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--navy); margin-top: 6px; text-transform: uppercase; }
-.tc-class { font-size: 13px; font-weight: 800; letter-spacing: -0.02em; margin-top: 10px; color: var(--ink-2); }
-.tc-desc { font-size: 12px; color: var(--mute); line-height: 1.7; margin-top: 4px; letter-spacing: -0.01em; word-break: keep-all; }
+/* DEVICE */
+.flow{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.flow-step{background:var(--paper);padding:24px 20px}
+.flow-n{font-family:var(--mono);font-size:10px;color:var(--mute-2);letter-spacing:.12em;margin-bottom:10px}
+.flow-t{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.device-wrap{margin-top:28px;border:1px solid var(--line);background:var(--paper-2);padding:40px;display:flex;justify-content:center}
+.device-wrap img{width:480px;max-width:100%}
+.specs{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.spec{padding:24px;background:var(--paper);text-align:center}
+.spec-icon{font-size:22px;margin-bottom:10px}
+.spec-label{font-size:13px;font-weight:600;color:var(--mute);letter-spacing:-.01em;line-height:1.5}
 
-/* ── SCHEDULE ── */
-.timetable { width: 100%; border-collapse: collapse; margin-top: 40px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
-.timetable thead th {
-  background: var(--navy); color: #fff;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-  padding: 12px 8px; text-align: center; border: none;
-}
-.timetable thead th.time-h { width: 52px; background: var(--navy-deep); }
-.timetable tbody td {
-  padding: 0 6px; text-align: center;
-  border: 1px solid var(--line); font-size: 11px; font-weight: 600;
-  letter-spacing: -0.01em; line-height: 1.35; word-break: keep-all;
-  height: 44px; vertical-align: middle; background: var(--white);
-}
-.timetable tbody td.t {
-  font-size: 10px; color: var(--mute-2); background: var(--cream);
-  font-weight: 400; letter-spacing: 0;
-}
-.timetable tbody td.empty { color: var(--mute-2); font-weight: 300; font-size: 14px; }
-.timetable tbody td.end { font-size: 10px; letter-spacing: 0.1em; color: var(--mute-2); font-weight: 400; background: var(--cream); }
-.timetable tbody tr:hover td { background: var(--navy-light); }
-.timetable tbody tr:hover td.t,
-.timetable tbody tr:hover td.end { background: var(--navy-light); }
+/* TRIAL */
+.trial-includes{margin-top:40px;display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+.ti-item{background:var(--paper);padding:28px 32px;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.ti-num{font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.03em;color:var(--line-2);line-height:1;padding-top:4px}
+.ti-title{font-size:17px;font-weight:800;letter-spacing:-.025em;color:var(--ink);margin-bottom:6px}
+.ti-desc{font-size:14px;color:var(--mute);line-height:1.8;letter-spacing:-.01em;word-break:keep-all}
 
-/* ── CTA ── */
-.cta-section {
-  background: var(--navy);
-  padding: 96px 0;
-}
-.cta-section .w {
-  display: grid; grid-template-columns: 1fr auto;
-  align-items: center; gap: 48px;
-}
-.cta-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
-h2.cta-title {
-  font-size: 36px; font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.2; color: #fff; font-family: var(--serif); word-break: keep-all;
-}
-.cta-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 14px; letter-spacing: -0.01em; }
-.cta-btns { display: flex; flex-direction: column; gap: 10px; }
-.btn-cta-primary {
-  display: block; background: #fff; color: var(--navy);
-  padding: 18px 36px; font-size: 15px; font-weight: 800;
-  letter-spacing: -0.01em; text-decoration: none; border-radius: 8px;
-  white-space: nowrap; text-align: center;
-}
-.btn-cta-secondary {
-  display: block; background: transparent; color: rgba(255,255,255,0.6);
-  padding: 14px 36px; font-size: 13px; font-weight: 600;
-  letter-spacing: -0.01em; text-decoration: none; border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.2); text-align: center;
-}
+/* CLOSING */
+.closing-sec{background:var(--ink);color:#fff}
+.closing-sec .w{padding-top:88px;padding-bottom:88px}
+.closing-sec .eyebrow{color:#444}
+.closing-sec h2{font-family:var(--serif);font-size:48px;font-weight:900;letter-spacing:-.04em;line-height:1.15;margin-top:16px}
+.closing-sec h2 u{text-decoration:none;border-bottom:2px solid #fff;padding-bottom:2px}
+.closing-body{margin-top:24px;font-size:15px;color:#666;line-height:1.9;letter-spacing:-.01em;max-width:480px}
 
-/* ── CLOSING ── */
-.closing {
-  background: var(--navy-deep); padding: 80px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.closing .w { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.closing-title {
-  font-size: 26px; font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.4; color: #fff; font-family: var(--serif); word-break: keep-all;
-}
-.closing-body {
-  font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.9;
-  letter-spacing: -0.01em;
-}
+/* FOOTER */
+.footer-sec{background:#0a0a0a}
+.footer-sec .w{padding-top:36px;padding-bottom:52px}
+.ft-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:14px}
+.ft-links a,.ft-links span{font-size:12px;color:#444;letter-spacing:-.01em;transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-links .sep{color:#222}
+.ft-biz{font-size:11px;color:#333;line-height:1.9;letter-spacing:-.01em;margin-bottom:14px}
+.ft-copy{font-size:10px;color:#2a2a2a;line-height:1.8;letter-spacing:.02em}
 
-/* ── FOOTER ── */
-footer {
-  background: var(--navy-deep);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 40px 0 60px;
-}
-.footer-links {
-  display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 20px;
-}
-.footer-links a {
-  font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35);
-  letter-spacing: -0.01em; text-decoration: none;
-}
-.footer-links a:hover { color: rgba(255,255,255,0.6); }
-.footer-biz {
-  font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.9;
-  letter-spacing: -0.01em; margin-bottom: 20px;
-}
-.footer-copy { font-size: 10px; color: rgba(255,255,255,0.15); }
-
-/* ── QUOTE ── */
-.quote-block {
-  margin-top: 28px; padding: 24px 28px;
-  background: var(--gold-bg); border-left: 3px solid var(--gold);
-  border-radius: 0 8px 8px 0;
-}
-.quote-block p {
-  font-size: 14px; line-height: 1.85; color: var(--ink-2);
-  letter-spacing: -0.015em; font-weight: 500; word-break: keep-all;
-}
-.quote-block cite {
-  display: block; margin-top: 10px; font-size: 11px;
-  color: var(--gold); letter-spacing: 0.06em; font-style: normal; font-weight: 700;
+/* MOBILE */
+@media(max-width:767px){
+  .w{padding-left:20px;padding-right:20px}
+  .topbar .w{height:52px}
+  .hero-sec .w{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:64px 0 48px;border-right:none;border-bottom:1px solid var(--line)}
+  .hero-title{font-size:32px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-right{height:280px}
+  .sec .w{padding-top:64px;padding-bottom:64px}
+  .sec-h{font-size:32px}
+  .instr-header-sec .w{padding-top:64px;padding-bottom:40px}
+  .instr-sec .w{grid-template-columns:1fr}
+  .instr-photo{aspect-ratio:4/3}
+  .instr-body{padding:32px 0;border-left:none;border-top:1px solid var(--line)}
+  .instr-name{font-size:44px}
+  .other-instrs-grid{grid-template-columns:repeat(2,1fr)}
+  .pillar-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:repeat(3,1fr)}
+  .flow{grid-template-columns:1fr 1fr}
+  .ti-item{grid-template-columns:1fr;gap:8px}
+  .ti-num{font-size:20px}
+  .closing-sec .w{padding-top:64px;padding-bottom:64px}
+  .closing-sec h2{font-size:34px}
+  .timetable th{font-size:8px;padding:10px 1px}
+  .timetable td{font-size:8.5px;height:38px}
+  .timetable th.th-t{width:30px}
 }
 </style>
 </head>
@@ -427,508 +210,241 @@ footer {
 <!-- TOPBAR -->
 <header class="topbar">
   <div class="w">
-    <div class="brand">
-      <img src="assets/sutton logo.png" alt="써튼어학원" class="brand-logo" />
-      <div class="brand-sep"></div>
-      <span class="brand-text">× 리얼아카데미 대치라이브</span>
-    </div>
-    <div class="topbar-right">
-      <span class="onair">LIVE</span>
-    </div>
+    <div class="brand">대치라이브는 리얼 아카데미에서</div>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero-sec">
   <div class="w">
     <div class="hero-left">
-      <div class="hero-school">
-        <img src="assets/sutton logo.png" alt="써튼어학원" class="hero-logo" />
-        <div class="hero-school-sep"></div>
-        <div class="hero-school-label">대치동 써튼어학원<br>원장 직강 라이브 클래스</div>
-      </div>
-      <div class="hero-tag">원장님 직접 수업</div>
+      <div class="hero-tag">초등영어 대치라이브</div>
       <h1 class="hero-title">
         대치동 <em>원장님 수업</em>을<br>
         집에서 실시간으로.
       </h1>
-      <p class="hero-sub">
-        크리스 원장님이 직접 이끄는 수업, 편집 없이 그대로.<br>
-        전국 어디서나 대치동 방식으로 영어를 배웁니다.
-      </p>
+      <p class="hero-sub">크리스 원장님이 직접 이끄는 수업, 편집 없이 그대로.<br>전국 어디서나 대치동 방식으로 영어를 배웁니다.</p>
       <div class="hero-stats">
-        <div class="hs">
-          <div class="hs-val">10년+</div>
-          <div class="hs-lbl">대치동<br>현장 경력</div>
-        </div>
-        <div class="hs">
-          <div class="hs-val">원장 직강</div>
-          <div class="hs-lbl">강사 위탁<br>없음</div>
-        </div>
-        <div class="hs">
-          <div class="hs-val">주 5일</div>
-          <div class="hs-lbl">실시간<br>라이브</div>
-        </div>
-        <div class="hs">
-          <div class="hs-val">Advanced</div>
-          <div class="hs-lbl">초등<br>고급 수준</div>
-        </div>
+        <div class="hs"><div class="hs-val">원장 직강</div></div>
+        <div class="hs"><div class="hs-val">주 5일 (월~금)</div></div>
+        <div class="hs"><div class="hs-val">오후 5시~밤 10시</div></div>
+        <div class="hs"><div class="hs-val">무제한 수강</div></div>
       </div>
     </div>
-
     <div class="hero-right">
-      <img src="assets/instructor-chris.png" alt="크리스 원장님" class="inst-photo" />
+      <img src="assets/instructor-chris.png" alt="크리스 원장님" class="inst-photo">
       <div class="hero-inst-overlay"></div>
       <div class="hero-inst-info">
-        <div class="hi-badge">PRINCIPAL INSTRUCTOR</div>
+        <img src="assets/sutton-logo.png" alt="써튼어학원" class="hero-logo">
         <div class="hi-name">크리스 원장님</div>
-        <div class="hi-role">써튼어학원 원장 · SUTTON ENGLISH ACADEMY</div>
+        <div class="hi-role">써튼어학원 원장 · 대치동 직강</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CREDS BAR -->
-<div class="creds-bar">
+
+<!-- VIDEO -->
+<section class="sec off">
   <div class="w">
-    <div class="cred-item">
-      <div class="cred-icon">🎓</div>
-      <div>
-        <div class="cred-text-val">University of Houston</div>
-        <div class="cred-text-lbl">경영학 학사</div>
+    <div class="eyebrow">LIVE BROADCAST</div>
+    <h2 class="sec-h">대치동 영어를<br>전국으로 송출합니다.</h2>
+    <div class="sec-rule"></div>
+    <div class="bv-label">LIVE · 대치동 → 전국</div>
+    <div class="bv-player">
+      <video autoplay muted loop playsinline controls>
+        <source src="uploads/intro_ra_sutton.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="bv-caption">실제 대치동 현장에서 진행된 수업 — 편집 없이 그대로</p>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="sec">
+  <div class="w">
+    <div class="eyebrow">WHY DAECHI</div>
+    <h2 class="sec-h">대치동 영어는<br>뭐가 다를까요?</h2>
+    <div class="sec-rule"></div>
+    <div class="pillar-grid">
+      <div class="pillar"><div class="pillar-n">01</div><h3>수업이 다릅니다.</h3><p>듣는 즉시 말하고, 말한 즉시 써내려가는 무한 아웃풋. 아웃풋이 될 때 영어는 비로소 진짜 실력이 됩니다.</p></div>
+      <div class="pillar"><div class="pillar-n">02</div><h3>강사가 다릅니다.</h3><p>끝내 성장하게 만드는 치밀한 전략과 집요함. 대치동 원장님이 직접 가르칩니다.</p></div>
+      <div class="pillar"><div class="pillar-n">03</div><h3>훈련이 다릅니다.</h3><p>'알 것 같다'는 착각에 머물지 않도록, 매 수업 반복훈련을 합니다.</p></div>
+      <div class="pillar"><div class="pillar-n">04</div><h3>시험이 다릅니다.</h3><p>TOEFL Primary · Junior를 표준으로 삼아 실력을 객관적으로 검증합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec off">
+  <div class="w">
+    <div class="eyebrow">VERIFIED RESULTS</div>
+    <h2 class="sec-h">리얼 아카데미<br>원생들의 성과입니다.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">공인영어시험 TOEFL로 그 결과를 확인했습니다. 감이 아니라, 점수입니다.</p>
+    <div class="cert-wrap">
+      <div class="cert-grid">
+        <div class="cert-item"><img src="assets/cert-01.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-02.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-03.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-04.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-05.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-06.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-07.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-08.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-09.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-10.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-11.png" alt=""></div>
+        <div class="cert-item"><img src="assets/cert-12.png" alt=""></div>
       </div>
     </div>
-    <div class="cred-item">
-      <div class="cred-icon">🏫</div>
-      <div>
-        <div class="cred-text-val">現 대치동 써튼어학원 원장</div>
-        <div class="cred-text-lbl">대치동 직접 운영 중</div>
-      </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS HEADER -->
+<div class="instr-header-sec">
+  <div class="w">
+    <div class="eyebrow">INSTRUCTORS</div>
+    <h2 class="sec-h">원장님이<br>직접 가르칩니다.</h2>
+  </div>
+</div>
+
+<!-- INSTRUCTOR: Chris -->
+<article class="instr-sec">
+  <div class="w">
+    <div class="instr-photo"><img src="assets/instructor-chris.png" alt="크리스 원장님"></div>
+    <div class="instr-body">
+      <div class="instr-num">INSTRUCTOR — 01</div>
+      <div class="instr-name">Chris</div>
+      <div class="instr-name-ko">크리스 원장님</div>
+      <span class="instr-badge">대치동 영어학원 원장</span>
+      <div class="instr-div"></div>
+      <p class="instr-bio"><b>실전 스피킹 커리큘럼 전문가.</b> 직접 체득한 현지 감각을 바탕으로 아이들에게 딱 맞춘 커리큘럼을 설계하고, 직접 수업에 들어갑니다.</p>
+      <ul class="instr-creds">
+        <li>SUTTON 영어학원 원장</li>
+        <li>SUTTON 초등영어 강사</li>
+        <li>University of Melbourne</li>
+      </ul>
     </div>
-    <div class="cred-item">
-      <div class="cred-icon">📍</div>
-      <div>
-        <div class="cred-text-val">iSpeak · WILS · ILE</div>
-        <div class="cred-text-lbl">대치동 10년+ 현장 강의 경력</div>
-      </div>
-    </div>
-    <div class="cred-item">
-      <div class="cred-icon">💬</div>
-      <div>
-        <div class="cred-text-val">30분 안에 입을 열게</div>
-        <div class="cred-text-lbl">어떤 아이든 발화 유도</div>
-      </div>
+  </div>
+</article>
+
+<!-- OTHER INSTRUCTORS -->
+<div class="other-instrs-sec">
+  <div class="w">
+    <h2 class="sec-h">대치동 강사님들.</h2>
+    <div class="other-instrs-grid">
+      <div class="oi-card"><div class="oi-role">강남·목동 1타 강사</div><div class="oi-name">Tina Cho</div><div class="oi-tags"><span class="oi-tag">미국 현지 표현</span><span class="oi-tag">액티비티 중심</span></div><ul class="oi-creds"><li>초중등 토플 지도 5년차</li><li>前 iSpeak Academy 강사</li><li>University of Houston</li></ul></div>
+      <div class="oi-card"><div class="oi-role">현직 사립초 교사</div><div class="oi-name">Bradley Hider</div><div class="oi-tags"><span class="oi-tag">심화 영어</span><span class="oi-tag">패턴 응용</span></div><ul class="oi-creds"><li>사립초교 원어민 교사</li><li>TEFL 자격증 보유</li><li>Lakehead University</li></ul></div>
+      <div class="oi-card"><div class="oi-role">기초부터 시험까지</div><div class="oi-name">Eliza Mikunda</div><div class="oi-tags"><span class="oi-tag">시험 영어</span><span class="oi-tag">창의 활동</span></div><ul class="oi-creds"><li>충남교육청 소속초교 원어민 교사</li><li>前 해외유학 프로그램 홍보대사</li><li>University of Kentucky</li></ul></div>
+      <div class="oi-card"><div class="oi-role">언어학 전문 강사</div><div class="oi-name">Ruan Van Heerden</div><div class="oi-tags"><span class="oi-tag">영어 퀴즈</span><span class="oi-tag">심화 문법</span></div><ul class="oi-creds"><li>주한영국문화원 강사</li><li>前 한국외국어대학교 강사</li><li>Stellenbosch University</li></ul></div>
+      <div class="oi-card"><div class="oi-role">국제학교 교사</div><div class="oi-name">Brennan Taniguchi</div><div class="oi-tags"><span class="oi-tag">고급 영어</span><span class="oi-tag">실전 대화</span></div><ul class="oi-creds"><li>국제학교 원어민 교사</li><li>前 YBM Sisa 원어민 교사</li><li>미국 교원자격증 취득</li></ul></div>
+      <div class="oi-card"><div class="oi-role">구글이 선택한 영어 강사</div><div class="oi-name">Tina Koo</div><div class="oi-tags"><span class="oi-tag">섀도잉</span><span class="oi-tag">스토리북</span></div><ul class="oi-creds"><li>구글 스타트업 캠퍼스 강사</li><li>前 리얼클래스 대표강사</li><li>중구청 초등학생 영어캠프 강사</li></ul></div>
+      <div class="oi-card"><div class="oi-role">영어 첫걸음 코치</div><div class="oi-name">Garrett Ederer</div><div class="oi-tags"><span class="oi-tag">파닉스</span><span class="oi-tag">알파벳</span></div><ul class="oi-creds"><li>前 사립초교 ESL 교사</li><li>TEFL/ESL 자격증 보유</li><li>University of Wisconsin-Madison</li></ul></div>
+      <div class="oi-card oi-more"><div class="oi-more-text">and more</div></div>
     </div>
   </div>
 </div>
 
-<!-- WHY SECTION -->
-<section class="section bg-white">
-  <div class="w">
-    <div class="section-eyebrow">WHY SUTTON LIVE</div>
-    <h2 class="section-title">대치동 원장님 수업,<br>이렇게 다릅니다.</h2>
-    <p class="section-sub">강사를 통한 전달이 아닌, 원장님이 직접 설계하고 직접 이끄는 수업입니다.</p>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="fc-num">POINT 01</div>
-        <div class="fc-title">원장님이 직접 수업합니다</div>
-        <p class="fc-body">써튼어학원을 운영하는 크리스 원장님이 직접 이끄는 수업입니다. 강사에게 위탁하는 수업이 아닙니다.</p>
-      </div>
-      <div class="feature-card">
-        <div class="fc-num">POINT 02</div>
-        <div class="fc-title">막히는 순간을 피하지 않습니다</div>
-        <p class="fc-body">틀려도 괜찮습니다. 중요한 건 다시 말하는 것. 발화의 양이 쌓이면 유창함은 따라옵니다.</p>
-      </div>
-      <div class="feature-card">
-        <div class="fc-num">POINT 03</div>
-        <div class="fc-title">외운 영어가 아닙니다</div>
-        <p class="fc-body">상황 속에서 내 생각을 영어로 꺼내는 훈련. 동네 학원에서 경험하기 어려운 대치동 방식입니다.</p>
-      </div>
-      <div class="feature-card">
-        <div class="fc-num">POINT 04</div>
-        <div class="fc-title">월화수목금, 매일 수업합니다</div>
-        <p class="fc-body">주 5일, 실시간 라이브로. 현장 수업과 동일한 밀도로 매일 영어에 노출됩니다.</p>
-      </div>
-    </div>
-
-    <div class="quote-block" style="margin-top:40px">
-      <p>어떤 아이라도 30분 안에 입을 열게 만드는 것,<br>대치동에서 수년간 쌓아온 방식 그대로입니다.</p>
-      <cite>— CHRIS, 써튼어학원 원장</cite>
-    </div>
-  </div>
-</section>
-
-<!-- CLASS SECTION -->
-<section class="section bg-cream">
-  <div class="w">
-    <div class="section-eyebrow">SIGNATURE CLASS</div>
-    <h2 class="section-title">[Advanced] Theme Talk Class</h2>
-    <p class="section-sub">두 명의 강사가 나누는 생생한 대화와 시각 자료를 보며,<br>암기 없이도 아이들의 생각이 자연스럽게 영어로 터져 나와요.<br>흥미로운 테마 속에서 상황에 맞춰 자신의 의견을 말하는 스피킹 실력을 길러요.</p>
-
-    <!-- Class 1 & 2 카드 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px">
-      <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden">
-        <div style="background:var(--navy);padding:20px 24px">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:6px">CLASS 1</div>
-          <div style="font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.03em;font-family:var(--serif)">Theme Talk Class 1</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px">생각 확장 테마 스피킹 : 1반</div>
-        </div>
-        <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">요일</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">월 · 수</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">시간</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">17:20~18:00</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">수업 시간</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">40분</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">총 강의 수</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">21강</div>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--line);padding-top:16px">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--mute);margin-bottom:10px">INSTRUCTORS</div>
-            <div style="display:flex;gap:8px">
-              <div style="background:var(--navy-light);border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--navy)">Tina Cho · 티나 선생님</div>
-              <div style="background:var(--navy-light);border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--navy)">Chris · 크리스 원장님</div>
-            </div>
-          </div>
-          <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#실전스피킹</span>
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#표현력확장</span>
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#활동형영어</span>
-          </div>
-        </div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden">
-        <div style="background:var(--navy-mid);padding:20px 24px">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:6px">CLASS 2</div>
-          <div style="font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.03em;font-family:var(--serif)">Theme Talk Class 2</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px">생각 확장 테마 스피킹 : 2반</div>
-        </div>
-        <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">요일</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">화 · 목</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">시간</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">17:20~18:00</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">수업 시간</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">40분</div>
-            </div>
-            <div style="background:var(--cream);border-radius:8px;padding:14px 12px">
-              <div style="font-size:10px;color:var(--mute);letter-spacing:0.06em;margin-bottom:4px">총 강의 수</div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">22강</div>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--line);padding-top:16px">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--mute);margin-bottom:10px">INSTRUCTORS</div>
-            <div style="display:flex;gap:8px">
-              <div style="background:var(--navy-light);border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--navy)">Chris · 크리스 원장님</div>
-            </div>
-          </div>
-          <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#실전스피킹</span>
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#표현력확장</span>
-            <span style="font-size:11px;color:var(--mute);background:var(--cream);padding:4px 10px;border-radius:999px">#활동형영어</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3 KEY POINTS -->
-    <div style="margin-top:60px">
-      <div class="section-eyebrow">3 KEY POINTS</div>
-      <div class="feature-grid" style="margin-top:20px">
-        <div class="feature-card">
-          <div class="fc-num">POINT 01</div>
-          <div class="fc-title">몰입을 극대화하는 스피킹 환경</div>
-          <p class="fc-body">흥미로운 테마와 생생한 비주얼 프롬프트를 활용해, 영어가 서툴러도 대화에 자연스럽게 빠져들며 영어를 느껴요.</p>
-        </div>
-        <div class="feature-card">
-          <div class="fc-num">POINT 02</div>
-          <div class="fc-title">상상을 언어로 바꾸는 자기 주도적 발화</div>
-          <p class="fc-body">단순 문장 암기 대신 직접 보고 느끼는 시각적 자극을 통해 나만의 생각을 자유로운 언어로 마음껏 표현해요.</p>
-        </div>
-        <div class="feature-card" style="grid-column:1/-1">
-          <div class="fc-num">POINT 03</div>
-          <div class="fc-title">자유로움과 정확성의 완벽한 균형</div>
-          <p class="fc-body">자유로운 대화와 체계적인 문장 훈련을 병행하며, 막힘없는 발화력과 정확한 표현력을 동시에 길러요.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 40분 수업 구성 -->
-    <div style="margin-top:60px;background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden">
-      <div style="background:var(--navy-deep);padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
-        <div style="font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.02em">40분 수업 구성</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.06em">LIVE CLASS STRUCTURE</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr">
-        <div style="padding:28px 28px;border-right:1px solid var(--line)">
-          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px">
-            <span style="font-size:28px;font-weight:900;color:var(--navy);font-family:var(--serif);letter-spacing:-0.04em">5</span>
-            <span style="font-size:12px;color:var(--mute);font-weight:600">분</span>
-          </div>
-          <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px">2-Host 테마 오프닝</div>
-          <p style="font-size:12px;color:var(--ink-2);line-height:1.75;letter-spacing:-0.01em;word-break:keep-all">두 강사의 자연스러운 대화를 관찰하며 오늘의 주제에 몰입해요.</p>
-        </div>
-        <div style="padding:28px 28px;border-right:1px solid var(--line)">
-          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px">
-            <span style="font-size:28px;font-weight:900;color:var(--navy);font-family:var(--serif);letter-spacing:-0.04em">20</span>
-            <span style="font-size:12px;color:var(--mute);font-weight:600">분</span>
-          </div>
-          <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px">인터랙티브 테마 토크 & 챌린지</div>
-          <p style="font-size:12px;color:var(--ink-2);line-height:1.75;letter-spacing:-0.01em;word-break:keep-all">시각 자료와 미션 게임(비교 대결, 예측 챌린지 등)으로 상상력을 자극하고, 묘사하기와 이유 말하기 등 정교한 문장 발화를 연습해요.</p>
-        </div>
-        <div style="padding:28px 28px">
-          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px">
-            <span style="font-size:28px;font-weight:900;color:var(--navy);font-family:var(--serif);letter-spacing:-0.04em">15</span>
-            <span style="font-size:12px;color:var(--mute);font-weight:600">분</span>
-          </div>
-          <div style="font-size:14px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px">핵심 표현 확장 및 간접 체험</div>
-          <p style="font-size:12px;color:var(--ink-2);line-height:1.75;letter-spacing:-0.01em;word-break:keep-all">핵심 표현을 교재와 연결해 내 것으로 만들고, 강사들이 직접 시연하는 실험이나 창작 과정을 보며 자연스럽게 대화를 마무리해요.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 수업 후 달라지는 것 -->
-    <div style="margin-top:48px;background:var(--navy-light);border-radius:12px;padding:32px 36px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--navy);margin-bottom:16px">AFTER CLASS</div>
-      <div style="font-size:17px;font-weight:900;letter-spacing:-0.03em;color:var(--navy);font-family:var(--serif);margin-bottom:20px">수업을 듣고 나면 어떻게 달라질까요?</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          <span style="color:var(--navy);font-size:16px;flex-shrink:0;margin-top:1px">💬</span>
-          <span style="font-size:13px;color:var(--ink-2);line-height:1.7;letter-spacing:-0.01em;word-break:keep-all">영어로 말하는 것에 대한 심리적 장벽이 사라져요</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          <span style="color:var(--navy);font-size:16px;flex-shrink:0;margin-top:1px">👄</span>
-          <span style="font-size:13px;color:var(--ink-2);line-height:1.7;letter-spacing:-0.01em;word-break:keep-all">단순 응답을 넘어 이유와 의견을 풍부하게 표현해요</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          <span style="color:var(--navy);font-size:16px;flex-shrink:0;margin-top:1px">✅</span>
-          <span style="font-size:13px;color:var(--ink-2);line-height:1.7;letter-spacing:-0.01em;word-break:keep-all">유창하면서도 정확한 문장 구조를 사용해요</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          <span style="color:var(--navy);font-size:16px;flex-shrink:0;margin-top:1px">✨</span>
-          <span style="font-size:13px;color:var(--ink-2);line-height:1.7;letter-spacing:-0.01em;word-break:keep-all">테마별 핵심 표현을 활용해 나만의 영어 문장을 완성해요</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSTRUCTORS DETAIL -->
-<section class="section bg-white">
-  <div class="w">
-    <div class="section-eyebrow">INSTRUCTORS</div>
-    <h2 class="section-title">Theme Talk Class를<br>이끄는 선생님들</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px">
-
-      <!-- Tina -->
-      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden">
-        <div style="display:flex;gap:0;align-items:stretch">
-          <div style="width:110px;flex-shrink:0;background:var(--navy-light)">
-            <img src="assets/instructor-eliza.png" alt="Tina Cho 선생님" style="width:100%;height:100%;object-fit:cover;object-position:center top" />
-          </div>
-          <div style="padding:22px 20px;flex:1">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--navy);margin-bottom:6px">CLASS 1</div>
-            <div style="font-size:22px;font-weight:900;letter-spacing:-0.03em;font-family:var(--serif)">Tina Cho</div>
-            <div style="font-size:12px;color:var(--mute);margin-top:2px">티나 조 선생님</div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;color:var(--navy-mid);margin-top:8px">SUTTON 스피킹 트레이너</div>
-          </div>
-        </div>
-        <div style="padding:20px 24px;border-top:1px solid var(--line)">
-          <p style="font-size:12.5px;color:var(--ink-2);line-height:1.85;letter-spacing:-0.01em;word-break:keep-all">말문이 터지는 스피킹 전문가! 미국 현지의 생생한 감각을 바탕으로 아이들이 영어로 자기만의 목소리를 낼 수 있게 도와줘요.</p>
-          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px">
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#미국현지표현</span>
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#말문폭발</span>
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#즐거운학습</span>
-          </div>
-          <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--mute);letter-spacing:0.06em;margin-bottom:8px">BACKGROUND</div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">University of Houston 경영학 학사</li>
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">동국대학교 영어영문학 / UNT 문헌정보학 석사</li>
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">초등·중등 스피킹/라이팅/토플 지도 4~5년</li>
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">現 SUTTON 초등 영어 강사</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Chris -->
-      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden">
-        <div style="display:flex;gap:0;align-items:stretch">
-          <div style="width:110px;flex-shrink:0;background:var(--navy-light)">
-            <img src="assets/instructor-chris.png" alt="크리스 원장님" style="width:100%;height:100%;object-fit:cover;object-position:center top" />
-          </div>
-          <div style="padding:22px 20px;flex:1">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--navy);margin-bottom:6px">CLASS 1 & 2</div>
-            <div style="font-size:22px;font-weight:900;letter-spacing:-0.03em;font-family:var(--serif)">Chris</div>
-            <div style="font-size:12px;color:var(--mute);margin-top:2px">크리스 원장님</div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;color:var(--navy-mid);margin-top:8px">SUTTON 영어학원 원장</div>
-          </div>
-        </div>
-        <div style="padding:20px 24px;border-top:1px solid var(--line)">
-          <p style="font-size:12.5px;color:var(--ink-2);line-height:1.85;letter-spacing:-0.01em;word-break:keep-all">실전 스피킹 커리큘럼 전문가! 직접 체득한 현지 감각을 바탕으로 아이들에게 딱 맞춘 스피킹 커리큘럼을 설계해요.</p>
-          <div style="margin-top:16px;display:flex;flex-wrap:gap:6px;gap:6px;flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#스피킹설계자</span>
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#현지실전영어</span>
-            <span style="font-size:11px;color:var(--mute-2);background:var(--cream);padding:3px 10px;border-radius:999px">#스피킹자신감</span>
-          </div>
-          <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--mute);letter-spacing:0.06em;margin-bottom:8px">BACKGROUND</div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">멜버른 대학교 회계금융학 학사</li>
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">現 SUTTON 영어학원 원장 (2021~현재)</li>
-              <li style="font-size:11.5px;color:var(--ink-2);line-height:1.6;letter-spacing:-0.01em">前 iSpeak Academy / WILS / ILE 강사</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ACCESS -->
-<section class="section bg-white">
-  <div class="w">
-    <div class="section-eyebrow">ACCESS</div>
-    <h2 class="section-title">대치동에 살지 않아도,<br>써튼어학원 수업을 들을 수 있습니다.</h2>
-    <div class="access-layout">
-      <div>
-        <p class="section-sub" style="margin-bottom:28px">
-          대치동 현장 수업을 편집 없이 실시간으로.<br>
-          전국 어디서나, 원장님 직강으로 받습니다.
-        </p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--navy-light);border-radius:8px">
-            <span style="font-size:20px">📡</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">실시간 라이브 송출</div>
-              <div style="font-size:11px;color:var(--mute);margin-top:2px">대치동 → 전국, 지연 없는 현장감</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--navy-light);border-radius:8px">
-            <span style="font-size:20px">📱</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">전용 기기 무상 배송</div>
-              <div style="font-size:11px;color:var(--mute);margin-top:2px">수업 전 기기를 집으로 보내드립니다</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--navy-light);border-radius:8px">
-            <span style="font-size:20px">🔄</span>
-            <div>
-              <div style="font-size:13px;font-weight:800;color:var(--navy);letter-spacing:-0.02em">언제든 반납 가능</div>
-              <div style="font-size:11px;color:var(--mute);margin-top:2px">부담 없이 먼저 경험해보세요</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="access-map">
-        <img src="assets/daechi-live-map-hq.png" alt="대치동 LIVE 송출 지도" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF -->
-<section class="section bg-navy">
-  <div class="w">
-    <div class="section-eyebrow inv">RESULT</div>
-    <h2 class="section-title inv">써튼어학원 수강생들이<br>내고 있는 결과입니다.</h2>
-    <p class="section-sub inv" style="margin-bottom:0">공인 영어시험 토플로 성장을 확인했습니다.</p>
-    <div class="cert-grid">
-      <div class="cert-item"><img src="assets/cert-01.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-02.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-03.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-04.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-05.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-06.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-07.png" alt="" /></div>
-      <div class="cert-item"><img src="assets/cert-08.png" alt="" /></div>
-    </div>
-  </div>
-</section>
-
 <!-- SCHEDULE -->
-<section class="section bg-cream">
+<section class="sec">
   <div class="w">
-    <div class="section-eyebrow">SCHEDULE</div>
-    <h2 class="section-title">수업 시간표</h2>
-    <table class="timetable" style="margin-top:32px">
+    <div class="eyebrow">WEEKLY SCHEDULE</div>
+    <h2 class="sec-h">월화수목금<br>매일 라이브.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">대치동 현장 수업이 그대로 전국에 실시간으로 송출됩니다.</p>
+    <table class="timetable">
       <thead>
-        <tr>
-          <th class="time-h">시간</th>
-          <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th>
-        </tr>
+        <tr><th class="th-t"></th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="t">17:20~18:00</td>
-          <td style="background:#EDF2FB;font-weight:800;color:var(--navy)">Theme Talk<br>Class 1</td>
-          <td style="background:#EEF0FB;font-weight:800;color:var(--navy-mid)">Theme Talk<br>Class 2</td>
-          <td style="background:#EDF2FB;font-weight:800;color:var(--navy)">Theme Talk<br>Class 1</td>
-          <td style="background:#EEF0FB;font-weight:800;color:var(--navy-mid)">Theme Talk<br>Class 2</td>
-          <td class="empty">—</td>
-        </tr>
-        <tr>
-          <td class="t">담당</td>
-          <td style="font-size:10px;color:var(--mute)">Tina + Chris</td>
-          <td style="font-size:10px;color:var(--mute)">Chris</td>
-          <td style="font-size:10px;color:var(--mute)">Tina + Chris</td>
-          <td style="font-size:10px;color:var(--mute)">Chris</td>
-          <td class="empty">—</td>
-        </tr>
+        <tr><td class="t">17:00</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td rowspan="2">써튼어학원</td><td class="empty" rowspan="2">·</td></tr>
+        <tr><td class="t">17:30</td></tr>
+        <tr><td class="t">18:00</td><td>기초 패턴 익히기</td><td>기초 패턴 익히기</td><td>기초 패턴 익히기</td><td>기초 패턴 익히기</td><td>토플 프라이머리 Step 1</td></tr>
+        <tr><td class="t">18:30</td><td>알파벳 &amp; 파닉스</td><td>알파벳 &amp; 파닉스</td><td>알파벳 &amp; 파닉스</td><td>알파벳 &amp; 파닉스</td><td class="empty">·</td></tr>
+        <tr><td class="t">19:00</td><td>심화 패턴 익히기</td><td>심화 패턴 익히기</td><td>심화 패턴 익히기</td><td>심화 패턴 익히기</td><td>토플 프라이머리 Step 2</td></tr>
+        <tr><td class="t">19:30</td><td>스토리북</td><td>스토리북</td><td>스토리북</td><td>스토리북</td><td class="empty">·</td></tr>
+        <tr><td class="t">20:00</td><td>고급 패턴 익히기</td><td>고급 패턴 익히기</td><td>고급 패턴 익히기</td><td>고급 패턴 익히기</td><td class="empty">·</td></tr>
+        <tr><td class="t">20:30</td><td>쉐도잉: 무민밸리</td><td>쉐도잉: 피너츠</td><td>쉐도잉: 무민밸리</td><td>쉐도잉: 피너츠</td><td class="empty">·</td></tr>
+        <tr><td class="t">21:00</td><td>창의적 스토리텔링</td><td>생활 영어 롤 플레이</td><td>초급 퀴즈 챔피언</td><td>중급 퀴즈 챔피언</td><td class="empty">·</td></tr>
+        <tr><td class="t">21:30</td><td class="end">END</td><td class="end">END</td><td class="end">END</td><td class="end">END</td><td class="end">END</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:14px;font-size:11px;color:var(--mute-2);letter-spacing:-0.01em">* 3개월 과정 · 주 2회 · 40분 수업 · 수업 시작 5분 전 입장 권장</p>
+  </div>
+</section>
+
+<!-- DEVICE -->
+<section class="sec off">
+  <div class="w">
+    <div class="eyebrow">DEVICE</div>
+    <h2 class="sec-h">숙제 채점까지 끝나야<br>진짜 끝납니다.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">대치동 시스템을 그대로 옮겨놓은 전용 기기.</p>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-n">01</div><div class="flow-t">예습노트</div></div>
+      <div class="flow-step"><div class="flow-n">02</div><div class="flow-t">본수업</div></div>
+      <div class="flow-step"><div class="flow-n">03</div><div class="flow-t">숙제</div></div>
+      <div class="flow-step"><div class="flow-n">04</div><div class="flow-t">실시간 첨삭·채점</div></div>
+    </div>
+    <div class="device-wrap"><img src="assets/device-fullfront-01.png" alt="대치라이브 전용 기기"></div>
+    <div class="specs">
+      <div class="spec"><div class="spec-icon">🌙</div><div class="spec-label">블루라이트<br>차단</div></div>
+      <div class="spec"><div class="spec-icon">📐</div><div class="spec-label">거북목 방지<br>받침대</div></div>
+      <div class="spec"><div class="spec-icon">⌨️</div><div class="spec-label">전용<br>키보드</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL -->
+<section id="trial" class="sec">
+  <div class="w">
+    <div class="eyebrow">FREE TRIAL</div>
+    <h2 class="sec-h">지금 바로<br>무료체험하세요.</h2>
+    <div class="sec-rule"></div>
+    <div class="trial-includes">
+      <div class="ti-item">
+        <div class="ti-num">01</div>
+        <div><div class="ti-title">무료체험 신청</div><div class="ti-desc">신청 후 담당 선생님이 직접 전화해 주소 확인 후 기기를 보내드립니다.</div></div>
+      </div>
+      <div class="ti-item">
+        <div class="ti-num">02</div>
+        <div><div class="ti-title">라이브클래스 전용기기 배송</div><div class="ti-desc">수업 후 숙제 제출·채점까지 전용기기로 진행됩니다.</div></div>
+      </div>
+      <div class="ti-item">
+        <div class="ti-num">03</div>
+        <div><div class="ti-title">원하는 클래스 무료체험</div><div class="ti-desc">체험 기간 동안 시간표 내 모든 수업을 무제한으로 들을 수 있습니다.</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CLOSING -->
-<div class="closing">
+<section class="closing-sec">
   <div class="w">
-    <div>
-      <div class="closing-title">대치동 써튼어학원이<br>직접 들어옵니다.</div>
-    </div>
-    <div>
-      <p class="closing-body">
-        수업의 밀도, 원장님의 방식, 아이가 직접 말하고 쓴 결과물 —<br>
-        말로 설명하는 것과 다릅니다.
-      </p>
-    </div>
+    <div class="eyebrow">DAECHI LIVE — REAL ACADEMY</div>
+    <h2>대치라이브는<br><u>리얼 아카데미</u>에서.</h2>
+    <p class="closing-body">전국 어디에 있든, 대치동 초등영어 시스템을 지금 바로 경험해보세요.</p>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="footer-sec">
   <div class="w">
-    <div class="footer-links">
-      <a href="https://realacademy.link/4e9oC2I" target="_blank" rel="noopener">이용약관</a>
-      <a href="https://realacademy.link/3ZbRnrr" target="_blank" rel="noopener">개인정보처리방침</a>
-      <a href="https://realacademy.link/notice" target="_blank" rel="noopener">공지사항</a>
+    <div class="ft-links">
+      <a href="https://realacademy.link/4e9oC2I" target="_blank" rel="noopener">이용약관</a><span class="sep">|</span>
+      <a href="https://realacademy.link/3ZbRnrr" target="_blank" rel="noopener">개인정보처리방침</a><span class="sep">|</span>
+      <a href="https://realacademy.link/notice" target="_blank" rel="noopener">공지사항</a><span class="sep">|</span>
       <a href="https://realacademy.link/3TdOFhr" target="_blank" rel="noopener">자주묻는 질문</a>
     </div>
-    <div class="footer-biz">
+    <div class="ft-biz">
       상호명: (주)소크라에이아이 ｜ 대표이사: 박수영 ｜ 사업자등록번호: 106-87-06394 ｜ 이메일: service@realacademy.co.kr<br>
       전화: 1644-9022 ｜ 주소: 서울특별시 강남구 테헤란로 424(에프엔타워 대치), 2, 19층<br>
       통신판매신고번호: 제 2015-서울강남-01494 호
     </div>
-    <div class="footer-copy">© 2025 Socra AI Inc. All Rights Reserved.</div>
+    <div class="ft-copy">
+      <div>© 2025 Socra AI Inc. All Rights Reserved.</div>
+      <div style="margin-top:5px">TM &amp; © Cartoon Network. (s25) ©Moomin Characters™ ©Gutsy Animations 2020<br>© ABD Ltd/Ent. One UK Ltd 2003. ©2016 Frog Box/Ent. One UK Ltd</div>
+    </div>
   </div>
 </footer>
 
